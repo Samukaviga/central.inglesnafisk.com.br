@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('gender', 150)->nullable();
             $table->string('course', 60)->nullable();
             $table->string('status', 60)->nullable();
+            $table->string('city', 60)->nullable();
 
             $table->string('lead_source')->nullable();
             $table->string('utm_source')->nullable();

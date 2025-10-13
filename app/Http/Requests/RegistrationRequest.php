@@ -22,7 +22,8 @@ class RegistrationRequest extends FormRequest
             'mobile_phone'     => ['required','string','regex:/^\d{10,11}$/'],
             'email'            => 'nullable|email:rfc,dns|max:150',
             'date_of_birth'    => 'nullable|date_format:Y-m-d|before_or_equal:today',
-
+            'course'           => 'nullable|string|max:150',
+            'city'             => 'nullable|string|max:100',
             'lead_source'      => 'required|string|max:100',
             'utm_source'       => 'nullable|string|max:100',
             'utm_medium'       => 'nullable|string|max:100',
@@ -58,7 +59,8 @@ class RegistrationRequest extends FormRequest
             'mobile_phone'     => $digits($this->mobile_phone),
             'email'            => $email,
             'date_of_birth'    => $dob,
-
+            'course'           => $this->course,
+            'city'             => $this->city,
 
 
             'utm_source'       => $trimOrNull($this->utm_source),

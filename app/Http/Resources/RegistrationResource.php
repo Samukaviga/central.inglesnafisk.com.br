@@ -18,6 +18,8 @@ class RegistrationResource extends JsonResource
             'id'                      => $this->id,
             'name'            => $this->name,
             'email'        => $this->email,
+            'course'        => $this->course,
+            'city'        => $this->city,
 
         ];
     }

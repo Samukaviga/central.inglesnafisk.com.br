@@ -16,6 +16,7 @@ class CreateRegistrationDTO
         public readonly ?string $gender,
         public readonly ?string $course,
         public readonly ?string $status,
+        public readonly ?string $city,
 
         public readonly string $lead_source,
         public readonly ?string $utm_source = null,
@@ -52,6 +53,7 @@ class CreateRegistrationDTO
             gender: self::nullIfEmpty($data['gender'] ?? null),
             course: self::nullIfEmpty($data['course'] ?? null),
             status: self::nullIfEmpty($data['status'] ?? null),
+            city: self::nullIfEmpty($data['city'] ?? null),
 
             lead_source: trim((string) ($data['lead_source'] ?? '')),
 
@@ -107,6 +109,7 @@ class CreateRegistrationDTO
             'gender'       => $this->gender,
             'course'       => $this->course,
             'status'       => $this->status,
+            'city'       => $this->city,
             'lead_source'  => $this->lead_source,
             'utm_source'   => $this->utm_source,
             'utm_medium'   => $this->utm_medium,

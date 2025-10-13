@@ -33,6 +33,7 @@ class Registration extends Model
         'age',
         'gender',
         'course',
+        'city',
         'status',
         'lead_source',
         'utm_source',
