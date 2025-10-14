@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->string('first_name', 150)->nullable();
             $table->string('name', 150)->nullable();
             $table->string('email', 120)->nullable();
             $table->string('mobile_phone', 20)->nullable();

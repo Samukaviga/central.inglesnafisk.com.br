@@ -25,6 +25,7 @@ class Registration extends Model
 
 
     protected $fillable = [
+        'first_name',
         'name',
         'email',
         'mobile_phone',

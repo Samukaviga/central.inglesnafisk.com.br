@@ -8,6 +8,7 @@ class CreateRegistrationDTO
 {
     public function __construct(
         public readonly string $name,
+        public readonly ?string $first_name,
         public readonly ?string $email,
         public readonly string $mobile_phone,
         public readonly ?string $date_of_birth,
@@ -41,9 +42,15 @@ class CreateRegistrationDTO
             }
         }
 
+
+        $string = explode(" ", $data['name']);
+        $data['first_name'] = $string[0];
+
+
         $dob = self::toYmdDate((string) ($data['date_of_birth'] ?? ''));
 
         return new self(
+            first_name: trim((string) $data['first_name']),
             name: trim((string) $data['name']),
             mobile_phone: self::cleanPhoneMask((string) $data['mobile_phone']),
             phone: trim((string) ($data['phone'] ?? '')),
@@ -100,6 +107,7 @@ class CreateRegistrationDTO
     public function toArray(): array
     {
         $base = [
+            'first_name'   => $this->first_name,
             'name'         => $this->name,
             'email'        => $this->email,
             'mobile_phone' => $this->mobile_phone,
