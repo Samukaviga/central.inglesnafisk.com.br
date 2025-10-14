@@ -8,6 +8,7 @@ use App\DTOs\UpdateRegistrationDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Resources\RegistrationResource;
+use App\Jobs\SendMessageJob;
 use App\Models\Registration;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -22,6 +23,9 @@ class RegistrationController extends Controller
 
             $action = new CreateRegistrationAction();
             $registration = $action->execute($dto);
+
+
+            SendMessageJob::dispatch($registration);
 
             return response()->json([
                 'success' => true,

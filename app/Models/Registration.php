@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\RegistrationCity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -47,5 +48,9 @@ class Registration extends Model
         'msclkid',
         'referrer',
         'landing_page',
+    ];
+
+    protected $casts = [
+        'city' => RegistrationCity::class,
     ];
 }
