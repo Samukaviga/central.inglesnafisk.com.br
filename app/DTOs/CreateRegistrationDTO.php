@@ -3,6 +3,8 @@
 namespace App\DTOs;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
+
 
 class CreateRegistrationDTO
 {
@@ -42,9 +44,19 @@ class CreateRegistrationDTO
             }
         }
 
-
+        //First Name
         $string = explode(" ", $data['name']);
         $data['first_name'] = $string[0];
+
+        //getting gender
+        $responseGender = Http::get('https://api.genderize.io', [
+            'name' => $data['first_name'],
+        ]);
+
+        if ($responseGender->successful()) {
+            $genderData = $responseGender->json();
+            $data['gender'] = $genderData['gender'] ?? null;
+        }
 
 
         $dob = self::toYmdDate((string) ($data['date_of_birth'] ?? ''));
@@ -112,7 +124,7 @@ class CreateRegistrationDTO
             'email'        => $this->email,
             'mobile_phone' => $this->mobile_phone,
             'phone'        => $this->phone,
-            'date_of_birth'=> $this->date_of_birth,
+            'date_of_birth' => $this->date_of_birth,
             'age'          => $this->age,
             'gender'       => $this->gender,
             'course'       => $this->course,
