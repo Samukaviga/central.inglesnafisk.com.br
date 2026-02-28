@@ -49,12 +49,15 @@ class SendMessageJob implements ShouldQueue
             } */
 
             // envio para uma URL unica 
-            $webhookUrl = 'https://webhook.sellflux.app/v2/webhook/custom/bc56928414aa893be6aea14c02f1c958';
+            $webhookUrl = 'https://webhook.sellflux.app/v2/webhook/custom/7610cf460b59f3403d6d78d0d5fe83bb';
 
             $response = Http::post($webhookUrl, [
                 'name'  => $registration->first_name,
                 'phone' => '+55' . preg_replace('/\D/', '', $registration->mobile_phone),
                 'email' => $registration->email,
+                'course_1' => $registration->course_1,
+                'course_2' => $registration->course_2,
+                'course_3' => $registration->course_3,
             ]);
 
             Log::info("Message sent successfully for registration ID {$registration->id}", [
