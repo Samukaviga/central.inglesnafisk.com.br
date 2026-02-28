@@ -39,14 +39,17 @@ class SendMessageJob implements ShouldQueue
 
         try {
             // compara com Enum (recomendado se city tiver cast)
-            if ($registration->city === RegistrationCity::SUZANO) {
+            /* if ($registration->city === RegistrationCity::SUZANO) {
                 $webhookUrl = 'https://webhook.sellflux.app/v2/webhook/custom/bc56928414aa893be6aea14c02f1c958';
             } elseif ($registration->city === RegistrationCity::ITAQUAQUECETUBA) {
                 $webhookUrl = 'https://webhook.sellflux.app/v2/webhook/custom/8456b530b0d0b90264b472ec26ef1abb';
             } else {
                 Log::info("No webhook configured for city: {$registration->city->value}");
                 return;
-            }
+            } */
+
+            // envio para uma URL unica 
+            $webhookUrl = 'https://webhook.sellflux.app/v2/webhook/custom/bc56928414aa893be6aea14c02f1c958';
 
             $response = Http::post($webhookUrl, [
                 'name'  => $registration->first_name,
