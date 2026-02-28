@@ -19,7 +19,9 @@ class RegistrationResource extends JsonResource
             'first_name'            => $this->first_name,
             'name'            => $this->name,
             'email'        => $this->email,
-            'course'        => $this->course,
+            'course_1'        => $this->course_1,
+            'course_2'        => $this->course_2,
+            'course_3'        => $this->course_3,
             'city'        => $this->city,
 
         ];
