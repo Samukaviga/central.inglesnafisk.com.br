@@ -6,6 +6,7 @@ enum RegistrationCity: string
 {
     case ITAQUAQUECETUBA = 'Itaquaquecetuba';
     case SUZANO = 'Suzano';
+    case ARUJA = 'Aruja';
 
     public static function all(): array
     {
@@ -19,6 +20,7 @@ enum RegistrationCity: string
         return match ($this) {
             self::ITAQUAQUECETUBA => 'Itaquaquecetuba',
             self::SUZANO => 'Suzano',
+            self::ARUJA => 'Aruja',
         };
     }
 }
